@@ -23,45 +23,32 @@ void debug_line(char *text){
 };
 
 
-void read_file(){
-	FILE *fp;
-	char buff[255];
-	
-	//pwd
-	char cwd[1024];
-    chdir("/path/to/change/directory/to");
-    getcwd(cwd, sizeof(cwd));
-    printf("Current working dir: %s\n", cwd);
-	
-    int count = 0;  // Line counter (result)
-    char filename[MAX_FILE_NAME];
-    char c;  // To store a character read from file
-    
-    // Get file name from user. The file should be
-    // either in current folder or complete path should be provided
-    printf("Enter file name: ");
-    scanf("%s", filename);
-  
-    // Open the file
-    fp = fopen(filename, "r");
-  
-    // Check if file exists
-    if (fp == NULL)
-    {
-        printf("Could not open file %s", filename);
-        return 0;
-    }
-  
-    // Extract characters from file and store in character c
-    for (c = getc(fp); c != EOF; c = getc(fp))
-        if (c == '\n') // Increment count if this character is newline
-            count = count + 1;
-  
-    // Close the file
-    fclose(fp);
-    printf("The file %s has %d lines\n ", filename, count);
+void read_input(){
+	int count;
+
+ 
+	// give some prompt...
+	printf("Enter a line of text:\n");
+	printf("EOF to stop.\n");
+ 
+
+	// get character from standard input store in variable count
+	count = getchar();
+ 
+
+	// while the End Of File is not encountered...
+	while(count != EOF)
+
+	{	
+		// put character on the standard output
+		putchar(count);
+		// carry on getting character from the standard input
+		count = getchar();
+	}	
+
 
 }
+
 
 
 
@@ -106,7 +93,7 @@ int main(void)
     printf("1st: Enter testsuite();\n");
     
     testsuite(&init);
-    read_file();
+    //read_file();
     //scanf("%s", &name);  - deprecated
     printf("Thomas is the best summoner.");
     return 0;
