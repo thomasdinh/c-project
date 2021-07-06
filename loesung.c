@@ -88,7 +88,17 @@ void testsuite(struct node *init){
 
 
 int main(void) 
-{
+{   
+	debug_line("Compile complete;");
+	int c= getchar();
+	int i =0;
+	
+	while ((c = fgetc(stdin)) != EOF) {
+    /* process `c' */
+    	printf("%c \n",c);
+	}		
+	debug_line("Reading completed");
+
     struct node init;
     printf("1st: Enter testsuite();\n");
     
